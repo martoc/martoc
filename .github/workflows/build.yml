@@ -1,0 +1,22 @@
+---
+name: build
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+    - main
+jobs:
+  tag:
+    permissions:
+      contents: write
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Tag
+        uses: martoc/action-tag@v0
+      - name: Release GitHub
+        uses: martoc/action-release@v0
+
